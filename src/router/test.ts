@@ -3,6 +3,8 @@ const router = express();
 import CarsController from "../controller/testController";
 import db from '../models/connection';
 import upload from "../middleware/upload";
+import imageUpload from "../middleware/imageUpload";
+
 
 const Cars=db.Cars;
 const carClass=new CarsController();
@@ -17,7 +19,7 @@ router.put('/updateCars/:id',carClass.updateCars);
 
 router.delete('/deleteCars/:id',carClass.deleteCars);
 
-router.post("/imageUpload",upload.single("image"),carClass.imageUpload);
+router.post("/imageUpload",imageUpload.single("image"),carClass.imageUpload);
 
 router.get("/pdfGenerator",carClass.pdfGenerator);
 
